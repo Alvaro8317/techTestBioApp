@@ -7,7 +7,7 @@ class RegisterService {
     async all(idMeter) {
         const client = await connect();
         const rta = await client.query(
-            `SELECT * FROM registers WHERE meter_id = '${idMeter}'`
+            `SELECT meter_id as idmeter, meter_date as date, active_energy as register FROM registers WHERE meter_id = '${idMeter}'`
         );
         if (!rta.rows.length) {
             return false;
